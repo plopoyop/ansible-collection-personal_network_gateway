@@ -1,0 +1,6 @@
+.devbox/
+.direnv
+.ansible/
+collections/
+.task
+*.tar.gz

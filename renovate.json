@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>plopoyop/renovate-config",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "matchPackageNames": [
+        "AdguardTeam/AdGuardHome",
+        "tobychui/zoraxy"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "roles/adguardhome/defaults/main.yml",
+        "roles/adguardhome/README.md"
+      ],
+      "matchStrings": [
+        "adguardhome_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "AdguardTeam/AdGuardHome",
+      "autoReplaceStringTemplate": "adguardhome_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "roles/zoraxy/defaults/main.yml",
+        "roles/zoraxy/README.md"
+      ],
+      "matchStrings": [
+        "zoraxy_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "tobychui/zoraxy",
+      "autoReplaceStringTemplate": "zoraxy_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}

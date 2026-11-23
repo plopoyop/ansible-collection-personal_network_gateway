@@ -1,0 +1,29 @@
+---
+- name: "Personal network gateway"
+  hosts: "{{ personal_network_gateway_hosts | default('personal_network_gateway') }}"
+  become: true
+  tasks:
+    - name: "Configure AdGuard Home (DNS)"
+      ansible.builtin.include_role:
+        name: "plopoyop.personal_network_gateway.adguardhome"
+        apply:
+          tags: ["adguardhome"]
+      when: personal_network_gateway_adguardhome_enabled | default(true)
+      tags: ["adguardhome"]
+
+    - name: "Configure Zoraxy (reverse proxy)"
+      ansible.builtin.include_role:
+        name: "plopoyop.personal_network_gateway.zoraxy"
+        apply:
+          tags: ["zoraxy"]
+      when: personal_network_gateway_zoraxy_enabled | default(true)
+      tags: ["zoraxy"]
+
+    # Last: CrowdSec reads the logs of the services above.
+    - name: "Configure CrowdSec (agent + firewall bouncer)"
+      ansible.builtin.include_role:
+        name: "plopoyop.personal_network_gateway.crowdsec"
+        apply:
+          tags: ["crowdsec"]
+      when: personal_network_gateway_crowdsec_enabled | default(true)
+      tags: ["crowdsec"]

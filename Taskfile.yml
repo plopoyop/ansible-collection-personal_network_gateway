@@ -1,0 +1,73 @@
+---
+version: '3'
+
+vars:
+  ROLES_LIST: ["adguardhome", "crowdsec", "zoraxy"]
+
+tasks:
+  default:
+    cmds:
+      - task -l
+    silent: true
+
+  prepare:
+    desc: "Prepare development environment"
+    cmds:
+      - task: pre-commit
+
+  pre-commit:
+    desc: "Install pre-commit hooks"
+    cmds:
+      - prek install
+    sources:
+      - .git/hooks/pre-commit
+      - prek.toml
+    generates:
+      - .git/hooks/pre-commit
+    method: checksum
+
+  check:
+    desc: "Run pre-commit hooks"
+    cmds:
+      - prek run -a
+
+  lint:
+    desc: "Run lint"
+    cmds:
+      - yamllint .
+      - ansible-lint
+
+  build:
+    desc: "Build the collection archive"
+    cmds:
+      - ansible-galaxy collection build --force ./
+
+  test:role:*:
+    desc: "Run molecule tests on a specific role"
+    dir: 'roles/{{.ROLE_NAME}}'
+    deps:
+      - prepare
+    cmds:
+      - molecule test --all
+    vars:
+      ROLE_NAME: '{{index .MATCH 0}}'
+
+  test:roles:all:
+    desc: "Run molecule tests on all roles"
+    cmds:
+      - for: { var: ROLES_LIST }
+        task: test:role:{{.ITEM}}
+
+  gen-doc:role:*:
+    desc: "Generate the README of a specific role"
+    dir: 'roles/{{.ROLE_NAME}}'
+    cmds:
+      - ansible-doctor -f
+    vars:
+      ROLE_NAME: '{{index .MATCH 0}}'
+
+  gen-doc:roles:all:
+    desc: "Generate the README of all roles"
+    cmds:
+      - for: { var: ROLES_LIST }
+        task: gen-doc:role:{{.ITEM}}
