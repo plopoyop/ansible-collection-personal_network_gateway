@@ -1,0 +1,36 @@
+---
+name: Test roles
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'roles/**'
+      - '.github/**'
+      - devbox.json
+      - devbox.lock
+  pull_request:
+    branches: [main]
+    paths:
+      - 'roles/**'
+      - '.github/**'
+      - devbox.json
+      - devbox.lock
+
+permissions:
+  contents: "read"
+
+jobs:
+  adguardhome:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "adguardhome"
+  crowdsec:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "crowdsec"
+  zoraxy:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "zoraxy"

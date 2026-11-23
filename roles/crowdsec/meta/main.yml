@@ -5,7 +5,7 @@ galaxy_info:
   description: "Install & configure CrowdSec and its firewall bouncer from the official repository"
   author: Clément Hubert
 
-  issue_tracker_url: "https://github.com/plopoyop/ansible-role-crowdsec/issues"
+  issue_tracker_url: "https://github.com/plopoyop/ansible-collection-personal_network_gateway/issues"
 
   license: "MPL-2.0"
 

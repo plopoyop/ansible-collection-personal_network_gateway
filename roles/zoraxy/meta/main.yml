@@ -5,9 +5,9 @@ galaxy_info:
   description: Install & configure Zoraxy reverse proxy
   author: Clément Hubert
 
-  issue_tracker_url: https://github.com/plopoyop/ansible-role-zoraxy/issues
+  issue_tracker_url: "https://github.com/plopoyop/ansible-collection-personal_network_gateway/issues"
 
-  license: MLP2
+  license: "MPL-2.0"
 
   min_ansible_version: "2.1"
 

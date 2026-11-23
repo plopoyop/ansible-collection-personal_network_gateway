@@ -1,0 +1,6 @@
+---
+exclude_paths:
+  - ".ansible/"
+  - ".devbox/"
+skip_list:
+  - yaml

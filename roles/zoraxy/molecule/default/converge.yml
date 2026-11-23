@@ -8,4 +8,4 @@
   tasks:
     - name: "Import role"
       ansible.builtin.import_role:
-        name: "plopoyop.zoraxy"
+        name: "plopoyop.personal_network_gateway.zoraxy"

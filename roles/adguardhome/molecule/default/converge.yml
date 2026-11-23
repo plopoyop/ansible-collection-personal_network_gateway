@@ -23,4 +23,4 @@
   tasks:
     - name: "Import role"
       ansible.builtin.import_role:
-        name: "plopoyop.adguardhome"
+        name: "plopoyop.personal_network_gateway.adguardhome"

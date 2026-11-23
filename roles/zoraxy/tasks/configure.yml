@@ -24,12 +24,12 @@
         url: "http://localhost:8000/"
         validate_certs: false
         return_content: true
-      register: index
+      register: zoraxy_index_page
       when: not zoraxy_disable_auth
 
     - name: "Set CSRF token"
       ansible.builtin.set_fact:
-        zoraxy_csrf_token: "{{ index.content | regex_search('zoraxy.csrf.Token\" content=\"(.*==)\">', '\\1') }}"
+        zoraxy_csrf_token: "{{ zoraxy_index_page.content | regex_search('zoraxy.csrf.Token\" content=\"(.*==)\">', '\\1') }}"
 
     - name: "Register admin user"
       ansible.builtin.uri:
@@ -37,12 +37,11 @@
         url: "http://localhost:8000/api/auth/register"
         headers:
           Content-Type: "application/x-www-form-urlencoded; charset=UTF-8"
-          Cookie: "{{ index.cookies_string }}"
+          Cookie: "{{ zoraxy_index_page.cookies_string }}"
           X-CSRF-Token: "{{ zoraxy_csrf_token | first }}"
         body: 'username={{ zoraxy_admin_user }}&password={{ zoraxy_admin_password }}'
         validate_certs: false
         body_format: raw
-      register: login
       when: not zoraxy_disable_auth
 
     - name: "Create flag file"

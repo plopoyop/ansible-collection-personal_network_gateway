@@ -1,4 +1,4 @@
-# plopoyop.adguardhome
+# plopoyop.personal_network_gateway.adguardhome
 
 Install & configure AdGuard Home DNS server
 

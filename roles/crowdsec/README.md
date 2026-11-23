@@ -1,4 +1,4 @@
-# plopoyop.crowdsec
+# plopoyop.personal_network_gateway.crowdsec
 
 Install & configure CrowdSec and its firewall bouncer from the official repository
 

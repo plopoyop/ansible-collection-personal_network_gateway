@@ -1,4 +1,0 @@
----
-major-labels: ['major', 'breaking']
-minor-labels: ['minor', 'enhancement']
-patch-labels: ['patch', 'bug', 'dependency']

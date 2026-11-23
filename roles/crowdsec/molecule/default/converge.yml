@@ -27,4 +27,4 @@
   tasks:
     - name: "Import role"
       ansible.builtin.import_role:
-        name: "plopoyop.crowdsec"
+        name: "plopoyop.personal_network_gateway.crowdsec"

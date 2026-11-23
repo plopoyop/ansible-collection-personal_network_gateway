@@ -118,7 +118,7 @@
 
     - name: "Apply the role without acquisitions nor firewall binding"
       ansible.builtin.include_role:
-        name: "plopoyop.crowdsec"
+        name: "plopoyop.personal_network_gateway.crowdsec"
       vars:
         crowdsec_acquisitions: []
         crowdsec_firewall_bouncer_restart_with: ""
