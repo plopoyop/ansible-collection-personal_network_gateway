@@ -8,6 +8,10 @@
 
 - fix\(adguardhome\): support check mode when installing or upgrading the binary [\#4](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/4) ([plopoyop](https://github.com/plopoyop))
 
+**Merged pull requests:**
+
+- fix\(deps\): update prek \(0.5.10 → 0.5.11\) [\#2](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/2) ([plopoyop](https://github.com/plopoyop))
+
 ## [0.1.0](https://github.com/plopoyop/ansible-collection-personal_network_gateway/tree/0.1.0) (2026-11-23)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-personal_network_gateway/compare/cfffaea1c0925cd8df87d5ad86e3fde09da11a3c...0.1.0)
