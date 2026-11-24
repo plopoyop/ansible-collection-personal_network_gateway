@@ -27,7 +27,7 @@
         state: "directory"
         suffix: "adguardhome"
       register: "adguardhome_tmp"
-      # Needed by the next task even in check mode.
+      # Needed by unarchive even in check mode.
       check_mode: false
 
     - name: "Download AdGuard Home archive (checksum verified)"
@@ -36,6 +36,7 @@
         dest: "{{ adguardhome_tmp.path }}/{{ adguardhome_archive_name }}"
         checksum: "sha256:{{ adguardhome_checksums_url }}"
         mode: "0600"
+      check_mode: false
 
     - name: "Extract AdGuard Home binary"
       ansible.builtin.unarchive:
@@ -49,6 +50,7 @@
         owner: "root"
         group: "{{ adguardhome_system_group }}"
         mode: "0750"
+      when: not (ansible_check_mode and not adguardhome_exec.stat.exists)
       notify: "Restart AdGuard Home"
 
   always:
@@ -57,6 +59,7 @@
         path: "{{ adguardhome_tmp.path }}"
         state: "absent"
       when: adguardhome_tmp.path is defined
+      check_mode: false
 
 - name: "Create systemd service file"
   ansible.builtin.template:
