@@ -8,6 +8,10 @@
 
 - fix\(adguardhome\): support check mode when installing or upgrading the binary [\#4](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/4) ([plopoyop](https://github.com/plopoyop))
 
+## ⚙️ Dependencies
+
+- fix\(deps\): update tobychui/zoraxy \(v3.3.4 → v3.3.5\) [\#3](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/3) ([plopoyop](https://github.com/plopoyop))
+
 **Merged pull requests:**
 
 - fix\(deps\): update prek \(0.5.10 → 0.5.11\) [\#2](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/2) ([plopoyop](https://github.com/plopoyop))
