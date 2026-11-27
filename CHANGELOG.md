@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/plopoyop/ansible-collection-personal_network_gateway/tree/0.1.2) (2026-11-27)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-personal_network_gateway/compare/0.1.1...0.1.2)
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.3.14 → v46.3.15\) [\#5](https://github.com/plopoyop/ansible-collection-personal_network_gateway/pull/5) ([plopoyop](https://github.com/plopoyop))
+
 ## [0.1.1](https://github.com/plopoyop/ansible-collection-personal_network_gateway/tree/0.1.1) (2026-11-24)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-personal_network_gateway/compare/0.1.0...0.1.1)
